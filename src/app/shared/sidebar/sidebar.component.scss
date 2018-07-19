@@ -10,7 +10,7 @@ $sidebar-closed-width: 60px;
     overflow: hidden;
     transition: width ease-in-out 300ms;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         width: $sidebar-open-width;
     }
 
