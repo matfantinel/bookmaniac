@@ -1,19 +1,19 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-          <a href="#">
+      <li class="sidebar-brand" routerLink="/">
+          <a>
             <i class="fas fa-book-open"></i>
             Bookmaniac
           </a>
       </li>
-      <li>
-          <a href="#">
+      <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <a>
             <i class="fas fa-chart-bar"></i>
-            Statistics
+            Dashboard
           </a>
       </li>
-      <li>
-          <a href="#">
+      <li routerLink="/books" routerLinkActive="active-link">
+          <a>
             <i class="fas fa-book"></i>
             Books
           </a>

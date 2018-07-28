@@ -1,0 +1,20 @@
+@import "../../../styles.scss";
+
+.card-body {
+  table {
+    thead {
+        th {
+            border-top: none;
+        }
+    }
+
+    tbody {
+        td {
+            input[type="checkbox"] {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+  }
+}

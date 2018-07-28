@@ -34,7 +34,5 @@
   'carousel',
   'utilities';
 
-$theme-colors: (
-  "primary": #44355B,
-  "secondary": #A5CC99
-);
+@import './assets/scss/colors';
+@import './assets/scss/global-styles';
