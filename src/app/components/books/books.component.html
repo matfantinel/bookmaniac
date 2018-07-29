@@ -1,11 +1,22 @@
-<div class="page-title">
-  Books
+<div class="page-header">
+  <span class="title">
+    My Collection
+  </span>
+
+  <div class="actions">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">
+      Add Books
+    </button>
+  </div>
 </div>
 
 <div class="page-content">
   <div class="card">
     <div class="card-body">
-      <table class="table">
+      <h4 *ngIf="!bookCollection || bookCollection.length <= 0">
+        You don't have any books in your collection.
+      </h4>
+      <table class="table" *ngIf="bookCollection && bookCollection.length > 0">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -31,6 +42,26 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Book to Collection</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Ai filho da puta vai se foder
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
     </div>
   </div>
 </div>

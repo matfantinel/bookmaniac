@@ -3,18 +3,14 @@
 #wrapper {
     display: flex;
     height: 100vh;
-
-    background-image: linear-gradient(
-        to left top,
-        #a5cc99,
-        #58ac9c,
-        #20879b,
-        #315e86,
-        #44355b
-    );
+    background-color: gray("300");
 
     #page-content-wrapper {
-        // background-color: gray("200");
         width: 100%;
+        padding-left: $sidebar-closed-width;
+
+        @include media-breakpoint-up(lg) {
+            padding-left: $sidebar-open-width;
+        }
     }
 }

@@ -1,7 +1,17 @@
-.page-title {
+.page-header {
   padding: 25px 15px;
-  font-size: 26px;
-  color: theme-color("light");
+  display: flex;
+
+  .title {
+    font-size: 26px;
+    color: theme-color("dark");
+    flex: 1;
+  }
+
+  .actions {
+    flex: 1;
+    text-align: right;
+  }
 }
 
 .page-content {
@@ -10,4 +20,18 @@
 
 .clickable {
   cursor: pointer;
+}
+
+button {
+  &.btn {
+    &.btn-primary {
+      background-color: theme-color("primary");
+      border-color: theme-color("primary");
+    }
+
+    &.btn-secondary {
+      background-color: theme-color("secondary");
+      border-color: theme-color("secondary");
+    }
+  }
 }
