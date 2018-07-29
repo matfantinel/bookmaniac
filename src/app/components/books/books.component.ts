@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Book } from "../../shared/models/book";
 import { BooksService } from "../../shared/services/books/books.service";
+import { NgbModal } from "../../../../node_modules/@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-books",
@@ -10,7 +11,7 @@ import { BooksService } from "../../shared/services/books/books.service";
 export class BooksComponent implements OnInit {
   bookCollection = new Array<Book>();
 
-  constructor(private booksService: BooksService) {}
+  constructor(private booksService: BooksService, private modalService: NgbModal) {}
 
   asd() {
     this.booksService
@@ -30,7 +31,11 @@ export class BooksComponent implements OnInit {
     alert("Not implemented");
   }
 
-  openAddToCollectionModal() {
-    alert("Not implemented");
+  openAddToCollectionModal(content) {
+    this.modalService.open(content, { centered: true }).result.then((result) => {
+      
+    }, (reason) => {
+      
+    });
   }
 }
