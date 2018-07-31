@@ -42,7 +42,7 @@ export class BooksService {
   public searchBooksByTerm(term: string): Observable<Array<BookResult>> {
     let query = {
       q: term,
-      languages: 'eng'
+      languages: 'eng'      
     };
 
     return this.httpService

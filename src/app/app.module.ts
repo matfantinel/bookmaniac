@@ -13,13 +13,15 @@ import { HttpService } from './shared/services/http/http.service';
 import { BooksService } from './shared/services/books/books.service';
 import { NgbModalStack } from '../../node_modules/@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { ScrollBar } from '../../node_modules/@ng-bootstrap/ng-bootstrap/util/scrollbar';
+import { AddBookModalComponent } from './components/books/add-book-modal/add-book-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     DashboardComponent,
-    BooksComponent
+    BooksComponent,
+    AddBookModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,9 @@ import { ScrollBar } from '../../node_modules/@ng-bootstrap/ng-bootstrap/util/sc
     BooksService,
     NgbModalStack,
     ScrollBar
+  ],
+  entryComponents: [
+    AddBookModalComponent
   ],
   bootstrap: [AppComponent]
 })

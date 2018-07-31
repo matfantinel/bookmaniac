@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Add Book to Collection</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" name="searchTermInput" #searchTermInput="ngModel" placeholder="Search for Books">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="addBook()">Add Book</button>
+    </div>
+  </div>
+  <small class="form-text text-muted">You can search for a book's title or author name.</small>
+
+  <hr>
+
+  Aqui listar os que foram adicionados acima
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-light" data-dismiss="modal" (click)="activeModal.dismiss()">Cancel</button>
+  <button type="button" class="btn btn-secondary">Save</button>
+</div>
