@@ -6,12 +6,19 @@
 </div>
 <div class="modal-body">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" [(ngModel)]="searchTerm" name="searchTermInput" #searchTermInput="ngModel" placeholder="Search for Books">
+
+    <ng-template #rt let-r="result" let-t="term">
+      {{ r.title + ' - ' + r.author_name }}
+    </ng-template>
+
+    <input type="text" class="form-control" [(ngModel)]="bookToAdd" name="searchTermInput" #searchTermInput="ngModel" placeholder="Search for Books" 
+      [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter">
     <div class="input-group-append">
       <button class="btn btn-primary" type="button" (click)="addBook()">Add Book</button>
     </div>
   </div>
   <small class="form-text text-muted">You can search for a book's title or author name.</small>
+  <small class="form-text text-muted" *ngIf="loading">Loading...</small>
 
   <hr>
 

@@ -28,13 +28,13 @@ import { AddBookModalComponent } from './components/books/add-book-modal/add-boo
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   providers: [
     HttpService,
     BooksService,
     NgbModalStack,
-    ScrollBar
+    ScrollBar    
   ],
   entryComponents: [
     AddBookModalComponent
