@@ -1,8 +1,9 @@
 export class Book {
-    id: string;
     title: string;
     description: string;
     author: string;
+    publishingYear: string;
     read: boolean;
     readDate?: Date;
+    openLibraryKey: string;
 }
