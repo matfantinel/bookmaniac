@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { BooksService } from "../../../shared/services/books/books.service";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { Observable, of } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../../../shared/services/books/books.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, of } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
   tap,
   switchMap,
   catchError
-} from "rxjs/operators";
-import { BookResult } from "../../../shared/models/book-result";
-import { Book } from "../../../shared/models/book";
+} from 'rxjs/operators';
+import { BookResult } from '../../../shared/models/book-result';
+import { Book } from '../../../shared/models/book';
 
 @Component({
-  selector: "app-add-book-modal",
-  templateUrl: "./add-book-modal.component.html",
-  styleUrls: ["./add-book-modal.component.scss"]
+  selector: 'app-add-book-modal',
+  templateUrl: './add-book-modal.component.html',
+  styleUrls: ['./add-book-modal.component.scss']
 })
 export class AddBookModalComponent implements OnInit {
   selectedBook: BookResult;
@@ -53,8 +53,8 @@ export class AddBookModalComponent implements OnInit {
 
   getTypeAheadResult(data: BookResult) {
     let result = data.title;
-    result += data.author_name ? `, ${data.author_name}` : "";
-    result += data.first_publish_year ? `, ${data.first_publish_year}` : "";
+    result += data.author_name ? `, ${data.author_name}` : '';
+    result += data.first_publish_year ? `, ${data.first_publish_year}` : '';
 
     return result;
   }
@@ -81,5 +81,24 @@ export class AddBookModalComponent implements OnInit {
     }
 
     this.booksToAdd.push(book);
+
+    this.selectedBook = null;
+  }
+
+  save() {
+    if (this.booksToAdd && this.booksToAdd.length >= 0) {
+      let db = localStorage.getItem('books');
+      let booksDB = db ? (JSON.parse(db) as Array<Book>) : new Array<Book>();
+
+      for (let book of this.booksToAdd) {
+        if (!booksDB.some(q => q.openLibraryKey == book.openLibraryKey)) {
+          booksDB.push(book);
+        }
+      }
+
+      localStorage.setItem('books', JSON.stringify(booksDB));
+    }
+
+    this.activeModal.close(true);
   }
 }

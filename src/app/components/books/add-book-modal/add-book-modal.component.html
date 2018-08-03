@@ -23,10 +23,29 @@
   </div>
   <small class="form-text text-muted">You can search for a book's title or author name.</small>
 
-  <hr> Aqui listar os que foram adicionados acima
+  <hr>
+
+  <div class="">
+    <table class="table" *ngIf="booksToAdd && booksToAdd.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of booksToAdd">
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.publishingYear }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-light" data-dismiss="modal" (click)="activeModal.dismiss()">Cancel</button>
-  <button type="button" class="btn btn-secondary">Save</button>
+  <button type="button" class="btn btn-secondary" (click)="save()">Save</button>
 </div>

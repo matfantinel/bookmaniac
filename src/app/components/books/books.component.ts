@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Book } from "../../shared/models/book";
-import { BooksService } from "../../shared/services/books/books.service";
-import { NgbModal } from "../../../../node_modules/@ng-bootstrap/ng-bootstrap";
-import { AddBookModalComponent } from "./add-book-modal/add-book-modal.component";
+import { Component, OnInit } from '@angular/core';
+import { Book } from '../../shared/models/book';
+import { BooksService } from '../../shared/services/books/books.service';
+import { NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { AddBookModalComponent } from './add-book-modal/add-book-modal.component';
 
 @Component({
-  selector: "app-books",
-  templateUrl: "./books.component.html",
-  styleUrls: ["./books.component.scss"]
+  selector: 'app-books',
+  templateUrl: './books.component.html',
+  styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  bookCollection = new Array<Book>();  
+  bookCollection = new Array<Book>();
 
   constructor(private modalService: NgbModal) {}
 
@@ -21,14 +21,24 @@ export class BooksComponent implements OnInit {
   }
 
   editBook(book: Book) {
-    alert("Not implemented");
+    alert('Not implemented');
+  }
+
+  loadBooks() {
+    let db = localStorage.getItem('books');
+    this.bookCollection = db ? (JSON.parse(db) as Array<Book>) : null;
   }
 
   openAddToCollectionModal() {
-    this.modalService.open(AddBookModalComponent, { centered: true }).result.then((result) => {
-      
-    }, (reason) => {
-      
-    });
-  }  
+    this.modalService
+      .open(AddBookModalComponent, { centered: true })
+      .result.then(
+        reload => {
+          if (reload) {
+            this.loadBooks();
+          }
+        },
+        reason => {}
+      );
+  }
 }

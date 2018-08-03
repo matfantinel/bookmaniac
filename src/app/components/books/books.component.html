@@ -19,9 +19,8 @@
       <table class="table" *ngIf="bookCollection && bookCollection.length > 0">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Description</th>
+            <th scope="col">Author</th>
             <th scope="col">Finished On</th>
             <th scope="col">Read</th>
             <th scope="col">Edit</th>
@@ -29,9 +28,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let book of bookCollection">
-            <th scope="row">{{ book.id }}</th>
             <td>{{ book.title }}</td>
-            <td>{{ book.description }}</td>
+            <td>{{ book.author }}</td>
             <td>{{ book.readDate | date: 'dd/MM/yyyy' }}</td>
             <td>
               <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
