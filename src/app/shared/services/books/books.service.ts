@@ -1,54 +1,47 @@
 import { Injectable } from "@angular/core";
-import { HttpService } from "../http/http.service";
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Headers } from '@angular/http';
-import { BookResult } from "../../models/book-result";
+import { Book } from "../../models/book";
 
 @Injectable({
   providedIn: "root"
 })
 export class BooksService {
-  baseApiUrl: string = "https://openlibrary.org";
-
-  constructor(private httpService: HttpService) {
-    this.headers = this.buildHeaders();
+  constructor() {
   }
 
-  private headers: Headers;
+  private getBooksDb = () => {
+    let db = localStorage.getItem('books');
+    let booksDb = db ? (JSON.parse(db) as Array<Book>) : new Array<Book>();
 
-  private buildHeaders(): Headers {
-    let headers = new Headers();
-    return headers;
+    return booksDb;
   }
 
-  private mountQuery(input: any) {
-    if (!input) {
-      return '';
+  private updateBooksDb = (books: Book[]) => {
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  public getBooks = () => this.getBooksDb();
+
+  public upsertBook = (book: Book) => {
+    const booksDb = this.getBooksDb();
+
+    let existingBookIndex = booksDb.findIndex(q => q.openLibraryKey == book.openLibraryKey);
+    if (existingBookIndex >= 0) {
+      booksDb[existingBookIndex] = book;
+    } else {      
+      booksDb.push(book);
     }
 
-    let properties = Object.getOwnPropertyNames(input);
-    let query = [];
-    for (let i = 0; i < properties.length; i++) {
-      if (properties[i]) {
-        query.push(`${properties[i]}=${encodeURIComponent(eval('input.' + properties[i]))}`);
-      }
-    }
-
-    let ret = query.join('&');
-    return ret;
+    this.updateBooksDb(booksDb);
   }
 
-  public searchBooksByTerm(term: string): Observable<Array<BookResult>> {
-    let query = {
-      q: term,
-      languages: 'eng'      
-    };
+  public deleteBook = (openLibraryKey: string) => {
+    const booksDb = this.getBooksDb();
 
-    return this.httpService
-      .get(`${this.baseApiUrl}/search.json?${this.mountQuery(query)}`, this.headers)
-      .pipe(
-        map(response => (response.json().docs) as Array<BookResult>)
-      );
+    let index = booksDb.findIndex(q => q.openLibraryKey == openLibraryKey);
+    if (index >= 0) {
+      booksDb.splice(index, 1);
+    }
+
+    this.updateBooksDb(booksDb);
   }
 }

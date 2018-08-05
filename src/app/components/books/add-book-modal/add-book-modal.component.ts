@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../../../shared/services/books/books.service';
+import { BooksApiService } from '../../../shared/services/books-api/books-api.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
 import {
@@ -11,6 +11,7 @@ import {
 } from 'rxjs/operators';
 import { BookResult } from '../../../shared/models/book-result';
 import { Book } from '../../../shared/models/book';
+import { BooksService } from '../../../shared/services/books/books.service';
 
 @Component({
   selector: 'app-add-book-modal',
@@ -24,6 +25,7 @@ export class AddBookModalComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private booksApiService: BooksApiService,
     private booksService: BooksService
   ) {}
 
@@ -40,7 +42,7 @@ export class AddBookModalComponent implements OnInit {
         term =>
           term.length <= 3
             ? of([])
-            : this.booksService.searchBooksByTerm(term).pipe(
+            : this.booksApiService.searchBooksByTerm(term).pipe(
                 tap(() => {}),
                 catchError(() => {
                   return of([]);
@@ -64,7 +66,7 @@ export class AddBookModalComponent implements OnInit {
       !this.selectedBook ||
       (this.booksToAdd &&
         this.booksToAdd.some(
-          q => q.openLibraryKey == this.selectedBook.oclc[0]
+          q => q.openLibraryKey == this.selectedBook.key
         ))
     ) {
       return;
@@ -72,7 +74,7 @@ export class AddBookModalComponent implements OnInit {
 
     let book = new Book();
     book.author = this.selectedBook.author_name;
-    book.openLibraryKey = this.selectedBook.oclc[0];
+    book.openLibraryKey = this.selectedBook.key;
     book.title = this.selectedBook.title;
     book.publishingYear = this.selectedBook.first_publish_year;
 
@@ -87,16 +89,9 @@ export class AddBookModalComponent implements OnInit {
 
   save() {
     if (this.booksToAdd && this.booksToAdd.length >= 0) {
-      let db = localStorage.getItem('books');
-      let booksDB = db ? (JSON.parse(db) as Array<Book>) : new Array<Book>();
-
       for (let book of this.booksToAdd) {
-        if (!booksDB.some(q => q.openLibraryKey == book.openLibraryKey)) {
-          booksDB.push(book);
-        }
+        this.booksService.upsertBook(book);
       }
-
-      localStorage.setItem('books', JSON.stringify(booksDB));
     }
 
     this.activeModal.close(true);

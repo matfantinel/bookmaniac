@@ -12,5 +12,10 @@
         @include media-breakpoint-up(lg) {
             padding-left: $sidebar-open-width;
         }
+
+        @include media-breakpoint-down(sm) {
+            padding-left: 0;
+            padding-top: $sidebar-closed-width;
+        }
     }
 }

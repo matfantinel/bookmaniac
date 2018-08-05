@@ -20,8 +20,8 @@
         <thead>
           <tr>
             <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Finished On</th>
+            <th scope="col" class="d-none d-lg-table-cell">Author</th>
+            <th scope="col" class="d-none d-lg-table-cell">Finished On</th>
             <th scope="col">Read</th>
             <th scope="col">Edit</th>
           </tr>
@@ -29,13 +29,13 @@
         <tbody>
           <tr *ngFor="let book of bookCollection">
             <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.readDate | date: 'dd/MM/yyyy' }}</td>
+            <td class="d-none d-lg-table-cell">{{ book.author }}</td>
+            <td class="d-none d-lg-table-cell">{{ book.readDate | date: 'dd/MM/yyyy' }}</td>
             <td>
               <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
             </td>
             <td>
-              <i class="clickable fas fa-pen" (click)="editBook(book)"></i>
+              <i class="clickable fas fa-pen" (click)="openEditBookModal(book)"></i>
             </td>
           </tr>
         </tbody>

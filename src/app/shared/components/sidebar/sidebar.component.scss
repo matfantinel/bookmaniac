@@ -4,7 +4,7 @@
   height: 100%;
   width: $sidebar-closed-width;
   overflow: hidden;
-  transition: width ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
   position: absolute;
   background-color: theme-color("primary");
   z-index: 999;
@@ -15,13 +15,37 @@
   &:hover {
     width: $sidebar-open-width;
   }
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    height: $sidebar-closed-width;
+
+    &:hover {
+      width: 100%;
+    }
+
+    &.toggled {
+      height: 100%;
+    }
+  }
+
   .sidebar-nav {
     list-style: none;
     padding: 0;
     width: $sidebar-open-width;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+
     li {
       font-size: 1.2em;
       padding: 10px 10px 10px 18px;
+
+      @include media-breakpoint-down(sm) {
+        height: $sidebar-closed-width;
+      }
+
       a {
         color: $white;
         text-decoration: none;
@@ -34,6 +58,12 @@
         a {
           color: theme-color("secondary");
           font-weight: 600;
+        }
+
+        .navbar-toggler {
+          color: $white;
+          float: right;
+          outline: none;
         }
       }
       .fas {

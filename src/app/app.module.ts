@@ -10,10 +10,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BooksComponent } from './components/books/books.component';
 import { HttpService } from './shared/services/http/http.service';
-import { BooksService } from './shared/services/books/books.service';
-import { NgbModalStack } from '../../node_modules/@ng-bootstrap/ng-bootstrap/modal/modal-stack';
-import { ScrollBar } from '../../node_modules/@ng-bootstrap/ng-bootstrap/util/scrollbar';
+import { BooksApiService } from './shared/services/books-api/books-api.service';
+import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
+import { ScrollBar } from '@ng-bootstrap/ng-bootstrap/util/scrollbar';
 import { AddBookModalComponent } from './components/books/add-book-modal/add-book-modal.component';
+import { EditBookModalComponent } from './components/books/edit-book-modal/edit-book-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddBookModalComponent } from './components/books/add-book-modal/add-boo
     SidebarComponent,
     DashboardComponent,
     BooksComponent,
-    AddBookModalComponent
+    AddBookModalComponent,
+    EditBookModalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,12 +34,13 @@ import { AddBookModalComponent } from './components/books/add-book-modal/add-boo
   ],
   providers: [
     HttpService,
-    BooksService,
+    BooksApiService,
     NgbModalStack,
     ScrollBar    
   ],
   entryComponents: [
-    AddBookModalComponent
+    AddBookModalComponent,
+    EditBookModalComponent
   ],
   bootstrap: [AppComponent]
 })
