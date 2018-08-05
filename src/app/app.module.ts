@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BooksComponent } from './components/books/books.component';
@@ -19,7 +19,7 @@ import { EditBookModalComponent } from './components/books/edit-book-modal/edit-
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
+    NavbarComponent,
     DashboardComponent,
     BooksComponent,
     AddBookModalComponent,

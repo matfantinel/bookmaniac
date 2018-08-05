@@ -1,8 +1,8 @@
 @import "../../../../styles.scss";
 
-#sidebar-wrapper {
+#navbar-wrapper {
   height: 100%;
-  width: $sidebar-closed-width;
+  width: $navbar-closed-width;
   overflow: hidden;
   transition: all ease-in-out 300ms;
   position: absolute;
@@ -10,15 +10,15 @@
   z-index: 999;
 
   @include media-breakpoint-up(lg) {
-    width: $sidebar-open-width;
+    width: $navbar-open-width;
   }
   &:hover {
-    width: $sidebar-open-width;
+    width: $navbar-open-width;
   }
 
   @include media-breakpoint-down(sm) {
     width: 100%;
-    height: $sidebar-closed-width;
+    height: $navbar-closed-width;
 
     &:hover {
       width: 100%;
@@ -29,10 +29,10 @@
     }
   }
 
-  .sidebar-nav {
+  .navbar-nav {
     list-style: none;
     padding: 0;
-    width: $sidebar-open-width;
+    width: $navbar-open-width;
 
     @include media-breakpoint-down(sm) {
       width: 100%;
@@ -43,7 +43,7 @@
       padding: 10px 10px 10px 18px;
 
       @include media-breakpoint-down(sm) {
-        height: $sidebar-closed-width;
+        height: $navbar-closed-width;
       }
 
       a {
@@ -53,7 +53,7 @@
       &.active-link {
         background-color: rgba(0, 0, 0, 0.3);
       }
-      &.sidebar-brand {
+      &.navbar-brand {
         font-size: 1.5em;
         a {
           color: theme-color("secondary");

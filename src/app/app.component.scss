@@ -7,15 +7,15 @@
 
     #page-content-wrapper {
         width: 100%;
-        padding-left: $sidebar-closed-width;
+        padding-left: $navbar-closed-width;
 
         @include media-breakpoint-up(lg) {
-            padding-left: $sidebar-open-width;
+            padding-left: $navbar-open-width;
         }
 
         @include media-breakpoint-down(sm) {
             padding-left: 0;
-            padding-top: $sidebar-closed-width;
+            padding-top: $navbar-closed-width;
         }
     }
 }
