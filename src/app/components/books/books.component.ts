@@ -30,7 +30,8 @@ export class BooksComponent implements OnInit {
 
   openEditBookModal(book: Book) {
     let modal = this.modalService.open(EditBookModalComponent, {
-      centered: true
+      centered: true,
+      windowClass: 'swing-top'
     });
     modal.componentInstance.book = book;
 
@@ -50,7 +51,10 @@ export class BooksComponent implements OnInit {
 
   openAddToCollectionModal() {
     this.modalService
-      .open(AddBookModalComponent, { centered: true })
+      .open(AddBookModalComponent, {
+        centered: true,
+        windowClass: 'swing-top'
+      })
       .result.then(
         reload => {
           if (reload) {
