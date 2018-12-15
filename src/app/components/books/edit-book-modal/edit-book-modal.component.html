@@ -1,14 +1,94 @@
 <div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLongTitle">Edit Book - {{ book.title }}</h5>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+  <h5 class="modal-title">Edit Book - {{ book.title }}</h5>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
+  <form #form>
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label>Title</label>
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          [(ngModel)]="book.title"
+          name="title"
+        />
+      </div>
 
+      <div class="form-group col-md-6">
+        <label>Author</label>
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          [(ngModel)]="book.author"
+          name="author"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Year</label>
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          [(ngModel)]="book.publishingYear"
+          name="publishingYear"
+        />
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>Started On</label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="book.startedDate"
+          name="startedDate"
+        />
+      </div>
+
+      <div class="form-group col-md-4">
+          <label>Read</label>
+          <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)" name="read">
+        </div>      
+
+      <div class="form-group col-md-4">
+        <label>Finished On</label>
+        <input type="date" class="form-control" [(ngModel)]="book.readDate" name="readDate" #readDate />
+      </div>
+
+      <div class="form-group col-lg-12">
+        <label>Reader's Notes</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          placeholder="Write notes, observations or reviews about the book"
+          [(ngModel)]="book.readerNotes"
+          name="readerNotes"
+        ></textarea>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-light" data-dismiss="modal" (click)="activeModal.dismiss()">Cancel</button>
-  <button type="button" class="btn btn-outline-danger" (click)="delete()">Remove from Collection</button>
+  <button
+    type="button"
+    class="btn btn-light"
+    data-dismiss="modal"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
+  <button type="button" class="btn btn-outline-danger" (click)="delete()">
+    Delete
+  </button>
   <button type="button" class="btn btn-success" (click)="save()">Save</button>
 </div>

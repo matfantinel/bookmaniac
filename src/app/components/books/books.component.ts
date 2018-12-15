@@ -24,8 +24,10 @@ export class BooksComponent implements OnInit {
   }
 
   bookReadChanged(book: Book) {
-    book.readDate = book.read ? new Date() : null;
-    this.booksService.upsertBook(book);
+    if (book.read && !book.readDate) {
+      book.readDate = book.read ? new Date() : null;
+      this.booksService.upsertBook(book);
+    }
   }
 
   openEditBookModal(book: Book) {
