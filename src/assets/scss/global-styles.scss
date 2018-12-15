@@ -1,3 +1,5 @@
+@import 'functions', 'variables', 'mixins';
+
 .page-header {
   padding: 25px 15px;
   display: flex;
@@ -24,14 +26,9 @@
 
 button {
   &.btn {
-    &.btn-primary {
-      background-color: theme-color("primary");
-      border-color: theme-color("primary");
-    }
-
-    &.btn-secondary {
-      background-color: theme-color("secondary");
-      border-color: theme-color("secondary");
+    &.btn-add {
+      border-radius: 25px;
+      font-size: 20px;
     }
   }
 }
@@ -45,5 +42,12 @@ button {
   &.swing-top {
     -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
     animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+  }
+
+  @media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 684px;
+        margin: 1.75rem auto;
+    }
   }
 }

@@ -4,8 +4,8 @@
   </span>
 
   <div class="actions">
-    <button type="button" class="btn btn-primary" (click)="openAddToCollectionModal()">
-      Add Books
+    <button type="button" class="btn btn-secondary btn-add" (click)="openAddToCollectionModal()">
+      <i class="fas fa-plus"></i>
     </button>
   </div>
 </div>
@@ -35,7 +35,9 @@
               <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
             </td>
             <td>
-              <i class="clickable fas fa-pen" (click)="openEditBookModal(book)"></i>
+              <button class="btn btn-outline-primary" (click)="openEditBookModal(book)">
+                Edit
+              </button>
             </td>
           </tr>
         </tbody>
