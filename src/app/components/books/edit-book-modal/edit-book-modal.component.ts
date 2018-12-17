@@ -31,7 +31,16 @@ export class EditBookModalComponent implements OnInit {
     private booksService: BooksService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.book) {
+      if (this.book.readDate) {
+        (this.book.readDate as any) = this.handleDateForInput(this.book.readDate);
+      }
+      if (this.book.startedDate) {
+        (this.book.startedDate as any) = this.handleDateForInput(this.book.startedDate);
+      }
+    }
+  }
 
   save() {
     if (this.form.invalid) {
@@ -51,8 +60,12 @@ export class EditBookModalComponent implements OnInit {
 
   bookReadChanged() {
     if (this.book.read && !this.book.readDate) {
-      //Converting it to any was necessary due to the use of HTML's native date input
-      (this.book.readDate as any) = new Date().toISOString().split('T')[0];
+      (this.book.readDate as any) = this.handleDateForInput(new Date());
     }
+  }
+
+  handleDateForInput(date: Date) {    
+    //Converting it to any was necessary due to the use of HTML's native date input
+    return new Date(date).toISOString().split('T')[0];
   }
 }
