@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -30,6 +31,7 @@ import { EditBookModalComponent } from './components/books/edit-book-modal/edit-
     FormsModule,
     AppRoutingModule,
     HttpModule,
+    NgxEchartsModule,
     NgbModule.forRoot()
   ],
   providers: [
