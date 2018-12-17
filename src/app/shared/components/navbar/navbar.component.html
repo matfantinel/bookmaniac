@@ -10,13 +10,13 @@
         <i class="fas" [ngClass]="{ 'fa-bars': !toggled, 'fa-times': toggled }"></i>
       </button>
     </li>
-    <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggleNavbar()">
+    <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeNavbar()">
       <a>
         <i class="fas fa-chart-bar"></i>
         Dashboard
       </a>
     </li>
-    <li routerLink="/books" routerLinkActive="active-link" (click)="toggleNavbar()">
+    <li routerLink="/books" routerLinkActive="active-link" (click)="closeNavbar()">
       <a>
         <i class="fas fa-book"></i>
         My Collection

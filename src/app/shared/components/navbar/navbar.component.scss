@@ -55,6 +55,7 @@
       }
       &.navbar-brand {
         font-size: 1.5em;
+        justify-content: space-between;
         a {
           color: theme-color("secondary");
           font-weight: 600;

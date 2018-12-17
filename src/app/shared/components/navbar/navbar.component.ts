@@ -17,4 +17,8 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() {
     this.toggled = !this.toggled;
   }
+
+  closeNavbar() {
+    this.toggled = false;
+  }
 }
