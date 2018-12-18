@@ -1,16 +1,12 @@
 @import "../../../styles.scss";
 
-.cards-row {
-  display: flex;
+.card {
+  margin: 5px;
 
-  .card {
-    margin: 5px;
-
-    &.flex-1 {
-      flex: 1;
-    }
-    &.flex-2 {
-      flex: 2;
-    }
+  &.flex-1 {
+    flex: 1;
+  }
+  &.flex-2 {
+    flex: 2;
   }
 }
