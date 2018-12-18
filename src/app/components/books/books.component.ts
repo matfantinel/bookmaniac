@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit {
   }
 
   bookReadChanged(book: Book) {
-    if (book.read && !book.readDate) {
+    if (!book.readDate) {
       book.readDate = book.read ? new Date() : null;
       this.booksService.upsertBook(book);
     }

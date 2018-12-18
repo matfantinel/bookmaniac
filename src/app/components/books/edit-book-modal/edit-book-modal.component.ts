@@ -59,8 +59,8 @@ export class EditBookModalComponent implements OnInit {
   }
 
   bookReadChanged() {
-    if (this.book.read && !this.book.readDate) {
-      (this.book.readDate as any) = this.handleDateForInput(new Date());
+    if (!this.book.readDate) {
+      (this.book.readDate as any) = this.book.read ? this.handleDateForInput(new Date()) : null;
     }
   }
 
