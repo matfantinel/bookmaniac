@@ -1,8 +1,10 @@
-<div class="page-header">Dashboard</div>
+<div class="page-header"><span class="title">
+  Dashboard
+</span></div>
 
 <div class="page-content">
   <div class="row">
-    <div class="col-lg-6 col-xl-8">
+    <div class="col-lg-8">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Monthly Books</h5>
@@ -15,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-4">
+    <div class="col-lg-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">My Collection</h5>
@@ -23,7 +25,50 @@
             The current state of my book collection
           </h6>
 
-          <div echarts [options]="collectionChartOptions"></div>
+          <div class="circular-chart-area">
+            <div class="circular-chart-container">
+              <svg class="circular-chart" viewBox="0 0 36 36">
+                <path
+                  width="100"
+                  class="circle-bg"
+                  d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path
+                  class="circle reading"
+                  [attr.stroke-dasharray]="readingBooksPercentage + ', 100'"
+                  d="M18 2.0845
+                                  a 15.9155 15.9155 0 1 0 0 31.831
+                                  a 15.9155 15.9155 0 1 0 0 -31.831"
+                />
+                <path
+                  class="circle read"
+                  [attr.stroke-dasharray]="readBooksPercentage + ', 100'"
+                  d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <text x="18" y="20.35" class="totalizer">{{ totalBooks }}</text>
+                <text x="18" y="25" class="totalizer-subtitle">books</text>
+              </svg>
+            </div>
+            <h3>{{ readBooksPercentage }}% of collection read</h3>
+            <ul>
+              <li class="read">
+                <span>Read</span>
+                <span>{{ readBooks }}</span>
+              </li>
+              <li class="reading">
+                <span>Reading</span>
+                <span>{{ readingBooks }}</span>
+              </li>
+              <li class="unread">
+                <span>Unread</span>
+                <span>{{ unreadBooks }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 #wrapper {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background-color: gray("300");
 
     #page-content-wrapper {

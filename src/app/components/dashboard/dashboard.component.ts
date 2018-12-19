@@ -9,65 +9,35 @@ import { BooksService } from 'src/app/shared/services/books/books.service';
 export class DashboardComponent implements OnInit {
   collectionChartOptions: any;
 
+  totalBooks: number;
+  readBooks: number;
+  unreadBooks: number;
+  readingBooks: number;
+  readBooksPercentage: number;
+  readingBooksPercentage: number;
+
   constructor(public booksService: BooksService) {}
 
   ngOnInit() {
-    this.initCollectionChartOptions();
+    this.loadCollectionChartData();
   }
 
-  public initCollectionChartOptions() {
-    this.collectionChartOptions = {
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-      },
-      series: [
-        {
-          name: 'Books',
-          type: 'pie',
-          radius: '55%',
-          center: ['40%', '50%'],
-          data: this.loadCollectionChartDate(),
-          itemStyle: {
-            emphasis: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            }
-          },
-          animationType: 'scale',
-          animationEasing: 'elasticOut',
-          animationDelay: function(idx) {
-            return Math.random() * 200;
-          }
-        }
-      ]
-    };
-  }
-
-  loadCollectionChartDate() {
+  loadCollectionChartData() {
     let books = this.booksService.getBooks();
     if (!books) {
-      return null;
+      return;
     }
 
-    let result = [];
+    this.totalBooks = books.length;
 
-    let unreadBooks = books.filter(q => !q.read && !q.startedDate).length;
-    if (unreadBooks > 0) {
-      result.push({ value: unreadBooks, name: 'Not Read', itemStyle: { color: '#5E565A' } });
-    }
+    this.unreadBooks = books.filter(q => !q.read && !q.startedDate).length;
 
-    let startedBooks = books.filter(q => !q.read && q.startedDate).length;
-    if (startedBooks > 0) {
-      result.push({ value: startedBooks, name: 'Started', itemStyle: { color: '#FF934F' } });
-    }
+    this.readingBooks = books.filter(q => !q.read && q.startedDate).length;
 
-    let readBooks = books.filter(q => q.read).length;
-    if (readBooks > 0) {
-      result.push({ value: readBooks, name: 'Finished', itemStyle: { color: '#4DA167' } });
-    }
+    this.readingBooksPercentage = Math.round(Math.floor((this.readingBooks / this.totalBooks) * 100))
 
-    return result;
+    this.readBooks = books.filter(q => q.read).length;
+
+    this.readBooksPercentage = Math.round(Math.floor((this.readBooks / this.totalBooks) * 100))
   }
 }
