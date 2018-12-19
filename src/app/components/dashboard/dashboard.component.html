@@ -11,12 +11,13 @@
           <h6 class="card-subtitle mb-2 text-muted">
             Comparison of books read this month vs previous months
           </h6>
-          <p class="card-text">
-            There's supposed to be a chart in here. Please pretend.
-          </p>
+          
+          <div echarts [options]="chartOptions"></div>
+
         </div>
       </div>
     </div>
+
     <div class="col-lg-4">
       <div class="card">
         <div class="card-body">

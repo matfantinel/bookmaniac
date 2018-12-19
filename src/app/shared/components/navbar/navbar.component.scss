@@ -5,7 +5,7 @@
   width: 100%;
   overflow: hidden;
   transition: all ease-in-out 300ms;
-  position: absolute;
+  position: fixed;
   background-color: theme-color("primary");
   z-index: 9;
 

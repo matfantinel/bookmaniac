@@ -13,13 +13,16 @@ export class DashboardComponent implements OnInit {
   readBooks: number;
   unreadBooks: number;
   readingBooks: number;
-  readBooksPercentage: number;
-  readingBooksPercentage: number;
+  readBooksPercentage: number = 0;
+  readingBooksPercentage: number = 0;
+
+  chartOptions: any;
 
   constructor(public booksService: BooksService) {}
 
   ngOnInit() {
     this.loadCollectionChartData();
+    this.loadChartOptions();
   }
 
   loadCollectionChartData() {
@@ -34,10 +37,42 @@ export class DashboardComponent implements OnInit {
 
     this.readingBooks = books.filter(q => !q.read && q.startedDate).length;
 
-    this.readingBooksPercentage = Math.round(Math.floor((this.readingBooks / this.totalBooks) * 100))
+    if (this.readingBooks > 0) {
+      this.readingBooksPercentage = Math.round(Math.floor((this.readingBooks / this.totalBooks) * 100))
+    }
 
     this.readBooks = books.filter(q => q.read).length;
 
-    this.readBooksPercentage = Math.round(Math.floor((this.readBooks / this.totalBooks) * 100))
+    if (this.readBooks > 0) {
+      this.readBooksPercentage = Math.round(Math.floor((this.readBooks / this.totalBooks) * 100))
+    }
+  }
+
+  loadChartOptions() {
+    this.chartOptions = {
+      backgroundColor: '#fff',
+      legend: {
+        data: 'Books Read'
+      },
+      xAxis: {
+        data: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Books Read'
+      },
+      series: [
+        {
+          name: 'Books Read',
+          type: 'bar',
+          stack: 'one',
+          itemStyle: {
+            color: '#FF934F'
+          },
+          data: [ 2, 2, 3, 1, 5, 7, 2, 3, 2, 1, 4, 6 ],
+          //formatter
+        }
+      ]
+    }
   }
 }
