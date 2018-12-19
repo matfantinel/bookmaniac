@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadCollectionChartData();
-    this.loadChartOptions();
+    this.loadMonthlyChartOptions();
   }
 
   loadCollectionChartData() {
@@ -48,14 +48,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  loadChartOptions() {
+  loadMonthlyChartOptions() {
     this.chartOptions = {
       backgroundColor: '#fff',
       legend: {
         data: 'Books Read'
       },
       xAxis: {
-        data: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]
+        data: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ]
       },
       yAxis: {
         type: 'value',
@@ -69,10 +69,35 @@ export class DashboardComponent implements OnInit {
           itemStyle: {
             color: '#FF934F'
           },
-          data: [ 2, 2, 3, 1, 5, 7, 2, 3, 2, 1, 4, 6 ],
+          data: this.loadMonthlyChartData()
           //formatter
         }
       ]
     }
+  }
+
+  loadMonthlyChartData() {
+    let books = this.booksService.getBooks();
+    if (books == null) {
+      return null;
+    }
+
+    let currentYear = new Date().getFullYear();
+    let readBooks = books.filter(q => q.read && q.readDate && new Date(q.readDate).getFullYear() == currentYear);
+
+    return [
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 0).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 1).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 2).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 3).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 4).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 5).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 6).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 7).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 8).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 9).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 10).length,
+      readBooks.filter(q => new Date(q.readDate).getMonth() == 11).length
+    ];
   }
 }
