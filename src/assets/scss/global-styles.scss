@@ -51,3 +51,26 @@ button {
     }
   }
 }
+
+.pretty {
+  input:checked {
+    ~.state {
+      &.p-primary  {
+        .icon {
+          color: theme-color("light") !important;
+        }
+        label:after {
+          background-color: theme-color("primary") !important;
+        }
+      }
+      &.p-secondary  {
+        .icon {
+          color: theme-color("light") !important;
+        }
+        label::after {
+          background-color: theme-color("secondary") !important;
+        }
+      }
+    }
+  }
+}

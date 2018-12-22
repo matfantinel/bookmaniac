@@ -32,7 +32,13 @@
             <td class="d-none d-lg-table-cell">{{ book.author }}</td>
             <td class="d-none d-lg-table-cell">{{ book.readDate | date: 'dd/MM/yyyy' }}</td>
             <td>
-              <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
+              <div class="pretty p-icon p-curve">
+                <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
+                <div class="state p-secondary">
+                  <i class="icon fas fa-check"></i>
+                  <label></label>
+                </div>
+              </div>
             </td>
             <td>
               <button class="btn btn-outline-primary" (click)="openEditBookModal(book)">
