@@ -46,8 +46,7 @@ export class InitialLoadService {
         openLibraryKey: '/works/OL1168210W',
         title: 'Animal Farm',
         publishingYear: '1920',
-        read: false,
-        readDate: new Date('2018-12-22')
+        read: false
       },
       {
         author: 'George Orwell',
