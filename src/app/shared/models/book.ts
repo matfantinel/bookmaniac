@@ -6,5 +6,5 @@ export class Book {
     startedDate?: Date;
     readDate?: Date;
     openLibraryKey: string;
-    readerNotes: string;
+    readerNotes?: string;
 }
