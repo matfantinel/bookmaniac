@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from 'src/app/shared/services/books/books.service';
+import { Book } from 'src/app/shared/models/book';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,13 +39,17 @@ export class DashboardComponent implements OnInit {
     this.readingBooks = books.filter(q => !q.read && q.startedDate).length;
 
     if (this.readingBooks > 0) {
-      this.readingBooksPercentage = Math.round(Math.floor((this.readingBooks / this.totalBooks) * 100))
+      this.readingBooksPercentage = Math.round(
+        Math.floor((this.readingBooks / this.totalBooks) * 100)
+      );
     }
 
     this.readBooks = books.filter(q => q.read).length;
 
     if (this.readBooks > 0) {
-      this.readBooksPercentage = Math.round(Math.floor((this.readBooks / this.totalBooks) * 100))
+      this.readBooksPercentage = Math.round(
+        Math.floor((this.readBooks / this.totalBooks) * 100)
+      );
     }
   }
 
@@ -56,7 +61,7 @@ export class DashboardComponent implements OnInit {
       },
       tooltip: {},
       xAxis: {
-        data: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ]
+        data: this.getPreviousMonthsLabels()
       },
       yAxis: {
         type: 'value',
@@ -73,7 +78,61 @@ export class DashboardComponent implements OnInit {
           data: this.loadMonthlyChartData()
         }
       ]
+    };
+  }
+
+  getPreviousMonthsLabels() {
+    let today = new Date();
+    let currentMonth = today.getMonth();
+
+    let result = [];
+
+    for (let i = 0; i < 12; i++) {
+      let month = currentMonth - i;
+      if (month < 0) {
+        month = month + 12;
+      }
+
+      switch (month) {
+        case 0:
+          result.unshift('Jan');
+          break;
+        case 1:
+          result.unshift('Feb');
+          break;
+        case 2:
+          result.unshift('Mar');
+          break;
+        case 3:
+          result.unshift('Apr');
+          break;
+        case 4:
+          result.unshift('May');
+          break;
+        case 5:
+          result.unshift('Jun');
+          break;
+        case 6:
+          result.unshift('Jul');
+          break;
+        case 7:
+          result.unshift('Aug');
+          break;
+        case 8:
+          result.unshift('Sep');
+          break;
+        case 9:
+          result.unshift('Oct');
+          break;
+        case 10:
+          result.unshift('Nov');
+          break;
+        case 11:
+          result.unshift('Dec');
+          break;
+      }
     }
+    return result;
   }
 
   loadMonthlyChartData() {
@@ -82,22 +141,37 @@ export class DashboardComponent implements OnInit {
       return null;
     }
 
-    let currentYear = new Date().getFullYear();
-    let readBooks = books.filter(q => q.read && q.readDate && new Date(q.readDate).getFullYear() == currentYear);
+    let today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
 
-    return [
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 0).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 1).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 2).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 3).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 4).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 5).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 6).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 7).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 8).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 9).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 10).length,
-      readBooks.filter(q => new Date(q.readDate).getMonth() == 11).length
-    ];
+    let readBooks = books.filter(
+      q =>
+        q.read &&
+        q.readDate &&
+        new Date(q.readDate).getFullYear() == currentYear
+    );
+
+    let result = [];
+
+    for (let i = 0; i < 12; i++) {
+      let year = currentYear;
+      let month = currentMonth - i;
+      if (month < 0) {
+        month = month + 12;
+        year = currentYear--;
+      }
+
+      result.unshift(this.getBooksByMonth(readBooks, month, year));
+    }
+    return result;
+  }
+
+  getBooksByMonth(books: Book[], month: number, year: number) {
+    return books.filter(
+      q =>
+        new Date(q.readDate).getFullYear() == year &&
+        new Date(q.readDate).getMonth() == month
+    ).length;
   }
 }
