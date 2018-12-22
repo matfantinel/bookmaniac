@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@import '../../../../styles.scss';
 
 #navbar-wrapper {
   height: $navbar-closed-height;
@@ -6,7 +6,7 @@
   overflow: hidden;
   transition: all ease-in-out 300ms;
   position: fixed;
-  background-color: theme-color("primary");
+  background-color: theme-color('primary');
   z-index: 9;
 
   @include media-breakpoint-down(md) {
@@ -57,7 +57,7 @@
         font-size: 1.5em;
         justify-content: space-between;
         a {
-          color: theme-color("secondary");
+          color: theme-color('secondary');
           font-weight: 600;
         }
 

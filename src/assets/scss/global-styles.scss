@@ -6,7 +6,7 @@
 
   .title {
     font-size: 26px;
-    color: theme-color("dark");
+    color: theme-color('dark');
     flex: 1;
   }
 
@@ -40,35 +40,36 @@ button {
 
 .modal {
   &.swing-top {
-    -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-    animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    -webkit-animation: swing-in-top-fwd 1s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   }
 
   @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 684px;
-        margin: 1.75rem auto;
+      max-width: 684px;
+      margin: 1.75rem auto;
     }
   }
 }
 
 .pretty {
   input:checked {
-    ~.state {
-      &.p-primary  {
+    ~ .state {
+      &.p-primary {
         .icon {
-          color: theme-color("light") !important;
+          color: theme-color('light') !important;
         }
         label:after {
-          background-color: theme-color("primary") !important;
+          background-color: theme-color('primary') !important;
         }
       }
-      &.p-secondary  {
+      &.p-secondary {
         .icon {
-          color: theme-color("light") !important;
+          color: theme-color('light') !important;
         }
         label::after {
-          background-color: theme-color("secondary") !important;
+          background-color: theme-color('secondary') !important;
         }
       }
     }

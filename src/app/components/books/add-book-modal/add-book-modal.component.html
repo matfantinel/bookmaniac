@@ -1,29 +1,45 @@
 <div class="modal-header">
   <h5 class="modal-title">Add Book to Collection</h5>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
   <div class="input-group mb-3">
-
     <ng-template #resultTemplate let-r="result" let-t="term">
       {{ getTypeAheadResult(r) }}
     </ng-template>
 
-    <input type="text" class="form-control" [(ngModel)]="selectedBook" name="searchTermInput" 
-      #searchTermInput="ngModel" placeholder="Search for Books"
-      [ngbTypeahead]="typeAheadSearch" [resultTemplate]="resultTemplate" [inputFormatter]="typeAheadFormatter">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="selectedBook"
+      name="searchTermInput"
+      #searchTermInput="ngModel"
+      placeholder="Search for Books"
+      [ngbTypeahead]="typeAheadSearch"
+      [resultTemplate]="resultTemplate"
+      [inputFormatter]="typeAheadFormatter"
+    />
 
     <i class="fas fa-spinner fa-spin loading-indicator" *ngIf="loading"></i>
 
     <div class="input-group-append">
-      <button class="btn btn-primary" type="button" (click)="addBook()">Add Book</button>
+      <button class="btn btn-primary" type="button" (click)="addBook()">
+        Add Book
+      </button>
     </div>
   </div>
-  <small class="form-text text-muted">You can search for a book's title or author name.</small>
+  <small class="form-text text-muted"
+    >You can search for a book's title or author name.</small
+  >
 
-  <hr>
+  <hr />
 
   <div class="">
     <table class="table" *ngIf="booksToAdd && booksToAdd.length > 0">
@@ -43,9 +59,15 @@
       </tbody>
     </table>
   </div>
-
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-light" data-dismiss="modal" (click)="activeModal.dismiss()">Cancel</button>
+  <button
+    type="button"
+    class="btn btn-light"
+    data-dismiss="modal"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
   <button type="button" class="btn btn-success" (click)="save()">Save</button>
 </div>

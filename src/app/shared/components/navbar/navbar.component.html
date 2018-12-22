@@ -1,26 +1,33 @@
-<div id="navbar-wrapper" [ngClass]="{ 'toggled': toggled }">
+<div id="navbar-wrapper" [ngClass]="{ toggled: toggled }">
   <ul class="navbar-nav">
     <li class="navbar-brand">
-      <a>
-        <i class="fas fa-book-open"></i>
-        Bookmaniac
-      </a>
+      <a> <i class="fas fa-book-open"></i> Bookmaniac </a>
 
-      <button class="navbar-toggler d-md-none" type="button" (click)="toggleNavbar()">
-        <i class="fas" [ngClass]="{ 'fa-bars': !toggled, 'fa-times': toggled }"></i>
+      <button
+        class="navbar-toggler d-md-none"
+        type="button"
+        (click)="toggleNavbar()"
+      >
+        <i
+          class="fas"
+          [ngClass]="{ 'fa-bars': !toggled, 'fa-times': toggled }"
+        ></i>
       </button>
     </li>
-    <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeNavbar()">
-      <a>
-        <i class="fas fa-chart-bar"></i>
-        Dashboard
-      </a>
+    <li
+      routerLink="/"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="closeNavbar()"
+    >
+      <a> <i class="fas fa-chart-bar"></i> Dashboard </a>
     </li>
-    <li routerLink="/books" routerLinkActive="active-link" (click)="closeNavbar()">
-      <a>
-        <i class="fas fa-book"></i>
-        My Collection
-      </a>
+    <li
+      routerLink="/books"
+      routerLinkActive="active-link"
+      (click)="closeNavbar()"
+    >
+      <a> <i class="fas fa-book"></i> My Collection </a>
     </li>
   </ul>
 </div>

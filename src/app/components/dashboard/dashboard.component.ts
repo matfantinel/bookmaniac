@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getPreviousMonthsLabels() {
-    let today = new Date("2019-01-08");
+    let today = new Date('2019-01-08');
     let currentMonth = today.getMonth();
 
     let result = [];
@@ -141,15 +141,11 @@ export class DashboardComponent implements OnInit {
       return null;
     }
 
-    let today = new Date("2019-01-08");
+    let today = new Date('2019-01-08');
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
-    let readBooks = books.filter(
-      q =>
-        q.read &&
-        q.readDate
-    );
+    let readBooks = books.filter(q => q.read && q.readDate);
 
     let result = [];
 

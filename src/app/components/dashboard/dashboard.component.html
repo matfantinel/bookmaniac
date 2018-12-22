@@ -1,6 +1,4 @@
-<div class="page-header"><span class="title">
-  Dashboard
-</span></div>
+<div class="page-header"><span class="title"> Dashboard </span></div>
 
 <div class="page-content">
   <div class="row">
@@ -11,9 +9,8 @@
           <h6 class="card-subtitle mb-2 text-muted">
             Comparison of books read this month vs previous months
           </h6>
-          
-          <div echarts [options]="chartOptions"></div>
 
+          <div echarts [options]="chartOptions"></div>
         </div>
       </div>
     </div>
@@ -57,16 +54,13 @@
             <h3>{{ readBooksPercentage }}% of collection read</h3>
             <ul>
               <li class="read">
-                <span>Read</span>
-                <span>{{ readBooks }}</span>
+                <span>Read</span> <span>{{ readBooks }}</span>
               </li>
               <li class="reading">
-                <span>Reading</span>
-                <span>{{ readingBooks }}</span>
+                <span>Reading</span> <span>{{ readingBooks }}</span>
               </li>
               <li class="unread">
-                <span>Unread</span>
-                <span>{{ unreadBooks }}</span>
+                <span>Unread</span> <span>{{ unreadBooks }}</span>
               </li>
             </ul>
           </div>

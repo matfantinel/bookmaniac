@@ -1,10 +1,12 @@
 <div class="page-header">
-  <span class="title">
-    My Collection
-  </span>
+  <span class="title"> My Collection </span>
 
   <div class="actions">
-    <button type="button" class="btn btn-secondary btn-add" (click)="openAddToCollectionModal()">
+    <button
+      type="button"
+      class="btn btn-secondary btn-add"
+      (click)="openAddToCollectionModal()"
+    >
       <i class="fas fa-plus"></i>
     </button>
   </div>
@@ -30,18 +32,26 @@
           <tr *ngFor="let book of bookCollection">
             <td>{{ book.title }}</td>
             <td class="d-none d-lg-table-cell">{{ book.author }}</td>
-            <td class="d-none d-lg-table-cell">{{ book.readDate | date: 'dd/MM/yyyy' }}</td>
+            <td class="d-none d-lg-table-cell">
+              {{ book.readDate | date: 'dd/MM/yyyy' }}
+            </td>
             <td>
               <div class="pretty p-icon p-curve">
-                <input type="checkbox" [(ngModel)]="book.read" (change)="bookReadChanged(book)">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="book.read"
+                  (change)="bookReadChanged(book)"
+                />
                 <div class="state p-secondary">
-                  <i class="icon fas fa-check"></i>
-                  <label></label>
+                  <i class="icon fas fa-check"></i> <label></label>
                 </div>
               </div>
             </td>
             <td>
-              <button class="btn btn-outline-primary" (click)="openEditBookModal(book)">
+              <button
+                class="btn btn-outline-primary"
+                (click)="openEditBookModal(book)"
+              >
                 Edit
               </button>
             </td>
@@ -52,10 +62,15 @@
   </div>
 </div>
 
-<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalTitle" aria-hidden="true">
+<div
+  class="modal fade"
+  id="addBookModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addBookModalTitle"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-
-    </div>
+    <div class="modal-content"></div>
   </div>
 </div>

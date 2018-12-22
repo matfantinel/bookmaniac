@@ -6,18 +6,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   public get(apiUrl: string, headers: Headers): Observable<Response> {
     return this.http.get(apiUrl, { headers: headers });
   }
 
-  public post(apiUrl: string, body: any, headers: Headers): Observable<Response> {
+  public post(
+    apiUrl: string,
+    body: any,
+    headers: Headers
+  ): Observable<Response> {
     return this.http.post(apiUrl, body, { headers: headers });
   }
 
-  public put(apiUrl: string, body: any, headers: Headers): Observable<Response> {
+  public put(
+    apiUrl: string,
+    body: any,
+    headers: Headers
+  ): Observable<Response> {
     return this.http.put(apiUrl, body, { headers: headers });
   }
 

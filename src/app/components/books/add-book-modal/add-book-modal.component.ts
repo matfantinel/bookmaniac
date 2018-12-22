@@ -38,16 +38,15 @@ export class AddBookModalComponent implements OnInit {
       debounceTime(500),
       distinctUntilChanged(),
       tap(() => (this.loading = true)),
-      switchMap(
-        term =>
-          term.length <= 3
-            ? of([])
-            : this.booksApiService.searchBooksByTerm(term).pipe(
-                tap(() => {}),
-                catchError(() => {
-                  return of([]);
-                })
-              )
+      switchMap(term =>
+        term.length <= 3
+          ? of([])
+          : this.booksApiService.searchBooksByTerm(term).pipe(
+              tap(() => {}),
+              catchError(() => {
+                return of([]);
+              })
+            )
       ),
       tap(() => (this.loading = false))
     );
@@ -65,9 +64,7 @@ export class AddBookModalComponent implements OnInit {
     if (
       !this.selectedBook ||
       (this.booksToAdd &&
-        this.booksToAdd.some(
-          q => q.openLibraryKey == this.selectedBook.key
-        ))
+        this.booksToAdd.some(q => q.openLibraryKey == this.selectedBook.key))
     ) {
       return;
     }

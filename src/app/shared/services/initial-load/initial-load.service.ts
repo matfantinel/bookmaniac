@@ -75,76 +75,76 @@ export class InitialLoadService {
         startedDate: new Date('2018-06-04')
       },
       {
-        author: "Douglas Adams",
-        openLibraryKey: "/works/OL2163720W",
-        title: "The Restaurant at the End of the Universe",
-        publishingYear: "1980",
-        startedDate: new Date("2018-08-15"),
+        author: 'Douglas Adams',
+        openLibraryKey: '/works/OL2163720W',
+        title: 'The Restaurant at the End of the Universe',
+        publishingYear: '1980',
+        startedDate: new Date('2018-08-15'),
         read: true,
-        readDate: new Date("2018-08-31")
+        readDate: new Date('2018-08-31')
       },
       {
-        author: "Douglas Adams",
-        openLibraryKey: "/works/OL2163719W",
-        title: "So long, and thanks for all the fish",
-        publishingYear: "1984",
-        startedDate: new Date("2018-09-12"),
+        author: 'Douglas Adams',
+        openLibraryKey: '/works/OL2163719W',
+        title: 'So long, and thanks for all the fish',
+        publishingYear: '1984',
+        startedDate: new Date('2018-09-12'),
         read: true,
-        readDate: new Date("2018-09-18")
+        readDate: new Date('2018-09-18')
       },
       {
-        author: "Douglas Adams",
-        openLibraryKey: "/works/OL2163721W",
+        author: 'Douglas Adams',
+        openLibraryKey: '/works/OL2163721W',
         title: "The Hitchhiker's Guide to the Galaxy",
-        publishingYear: "1979",
-        startedDate: new Date("2018-08-03"),
+        publishingYear: '1979',
+        startedDate: new Date('2018-08-03'),
         read: true,
-        readDate: new Date("2018-08-10")
+        readDate: new Date('2018-08-10')
       },
       {
-        author: "Douglas Adams",
-        openLibraryKey: "/works/OL2163718W",
-        title: "Mostly Harmless",
-        publishingYear: "1992",
-        startedDate: new Date("2018-09-22"),
+        author: 'Douglas Adams',
+        openLibraryKey: '/works/OL2163718W',
+        title: 'Mostly Harmless',
+        publishingYear: '1992',
+        startedDate: new Date('2018-09-22'),
         read: true,
-        readDate: new Date("2018-09-29")
+        readDate: new Date('2018-09-29')
       },
       {
-        author: "Douglas Adams",
-        openLibraryKey: "/works/OL2163716W",
-        title: "Life, the Universe and Everything",
-        publishingYear: "1982",
-        startedDate: new Date("2018-09-02"),
+        author: 'Douglas Adams',
+        openLibraryKey: '/works/OL2163716W',
+        title: 'Life, the Universe and Everything',
+        publishingYear: '1982',
+        startedDate: new Date('2018-09-02'),
         read: true,
-        readDate: new Date("2018-09-07")
+        readDate: new Date('2018-09-07')
       },
       {
-        author: "Dan Brown",
-        openLibraryKey: "/works/OL76837W",
-        title: "The Da Vinci Code",
-        publishingYear: "2003",
-        startedDate: new Date("2018-10-12"),
+        author: 'Dan Brown',
+        openLibraryKey: '/works/OL76837W',
+        title: 'The Da Vinci Code',
+        publishingYear: '2003',
+        startedDate: new Date('2018-10-12'),
         read: true,
-        readDate: new Date("2018-10-22")
+        readDate: new Date('2018-10-22')
       },
       {
-        author: "Dan Brown",
-        openLibraryKey: "/works/OL16804500W",
-        title: "Inferno",
-        publishingYear: "2013",
-        startedDate: new Date("2018-10-30"),
+        author: 'Dan Brown',
+        openLibraryKey: '/works/OL16804500W',
+        title: 'Inferno',
+        publishingYear: '2013',
+        startedDate: new Date('2018-10-30'),
         read: true,
-        readDate: new Date("2018-11-15")
+        readDate: new Date('2018-11-15')
       },
       {
-        author: "Dan Brown",
-        openLibraryKey: "/works/OL76838W",
-        title: "Angels & Demons",
-        publishingYear: "2000",
-        startedDate: new Date("2018-10-01"),
+        author: 'Dan Brown',
+        openLibraryKey: '/works/OL76838W',
+        title: 'Angels & Demons',
+        publishingYear: '2000',
+        startedDate: new Date('2018-10-01'),
         read: true,
-        readDate: new Date("2018-10-11")
+        readDate: new Date('2018-10-11')
       }
     ];
 

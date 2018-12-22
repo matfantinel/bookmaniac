@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@import '../../../styles.scss';
 
 .card {
   margin: 5px;
@@ -22,7 +22,7 @@
 
   h3 {
     font-size: 18px;
-    color: theme-color("dark");
+    color: theme-color('dark');
     text-align: center;
     margin: 8px 0 0 0;
     padding: 0;
@@ -42,18 +42,18 @@
       align-items: center;
       justify-content: space-between;
       font-size: 18px;
-      color: theme-color("dark");
+      color: theme-color('dark');
 
       &.read {
-        color: theme-color("success");
+        color: theme-color('success');
       }
 
       &.unread {
-        color: theme-color("primary");
+        color: theme-color('primary');
       }
 
       &.reading {
-        color: theme-color("secondary");
+        color: theme-color('secondary');
       }
     }
   }
@@ -69,19 +69,18 @@
       display: absolute;
 
       .circle {
-
         &.read {
-          stroke: theme-color("success");
+          stroke: theme-color('success');
         }
 
         &.reading {
-          stroke: theme-color("secondary");
+          stroke: theme-color('secondary');
         }
       }
 
       .circle-bg {
         fill: none;
-        stroke: theme-color("primary");
+        stroke: theme-color('primary');
         stroke-width: 3.8;
       }
 
@@ -93,7 +92,7 @@
       }
 
       .totalizer {
-        fill: theme-color("dark");
+        fill: theme-color('dark');
         font-size: 0.5em;
         text-anchor: middle;
       }

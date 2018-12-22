@@ -1,14 +1,14 @@
 @import '../styles.scss';
 
 #wrapper {
-    display: flex;
-    min-height: 100vh;
-    background-color: gray("300");
+  display: flex;
+  min-height: 100vh;
+  background-color: gray('300');
 
-    #page-content-wrapper {
-        width: 100%;
-        padding-top: $navbar-closed-height;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
+  #page-content-wrapper {
+    width: 100%;
+    padding-top: $navbar-closed-height;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }
