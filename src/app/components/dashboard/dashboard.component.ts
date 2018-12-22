@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
       legend: {
         data: 'Books Read'
       },
+      tooltip: {},
       xAxis: {
         data: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ]
       },
@@ -70,7 +71,6 @@ export class DashboardComponent implements OnInit {
             color: '#FF934F'
           },
           data: this.loadMonthlyChartData()
-          //formatter
         }
       ]
     }
